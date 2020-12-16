@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Movie Brackets</title>
+<head>
+  <title>
+    Movie Brackets
+  </title>
 
-    <%= csp_meta_tag %>
+  <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
+  <meta charset="utf-8">
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
-    <meta charset="utf-8">
+  <!-- Make it responsive to small screens. Include only if you're using responsive CSS. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Connect Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <!-- Connect Bootstrap JavaScript and its dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <!-- Helper methods that create <link>s and <script>s for all of the stylesheets and javascript files in the non-`/public/` assets folders. -->
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%# javascript_pack_tag  'application' %>
 
-    <!-- Connect Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+  <!-- Rendering a partial that has all the <link>s and <script>s for assets we are pulling from content-delivery networks. -->
+  <%= render "shared/cdn_assets" %>
 
-    <!-- Make it responsive to small screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <style>
+    body { padding-bottom: 70px }
+  </style>
+</head>
 
-  </head>
+<body>
+  <%= render "shared/navbar" %>
 
-  <body>
+  <div class="container">
+    <%= render "shared/flashes" %>
+
     <%= yield %>
-  </body>
+  </div>
+
+</body>
 </html>

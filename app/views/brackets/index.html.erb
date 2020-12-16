@@ -17,26 +17,14 @@
     <form action="/insert_bracket" method="post">
       <div>
         <label for="number_of_entries_box">
-          Number of entries
+          How many entries do you want your bracket to have?
         </label>
 
-        <input type="text" id="number_of_entries_box" name="query_number_of_entries">
-      </div>
-
-      <div>
-        <label for="manager_id_box">
-          Manager
-        </label>
-
-        <input type="text" id="manager_id_box" name="query_manager_id">
-      </div>
-
-      <div>
-        <label for="status_box">
-          Status
-        </label>
-
-        <input type="text" id="status_box" name="query_status">
+        <select id="number_of_entries_box" name="query_number_of_entries">
+          <option value="four">4</option>
+          <option value="eight">8</option>
+          <option value="sixteen">16</option>
+        </select>
       </div>
 
       <button>

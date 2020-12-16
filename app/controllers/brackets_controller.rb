@@ -20,8 +20,8 @@ class BracketsController < ApplicationController
   def create
     the_bracket = Bracket.new
     the_bracket.number_of_entries = params.fetch("query_number_of_entries")
-    the_bracket.manager_id = params.fetch("query_manager_id")
-    the_bracket.status = params.fetch("query_status")
+    the_bracket.manager_id = @current_user.id
+    the_bracket.status = "created"
 
     if the_bracket.valid?
       the_bracket.save
