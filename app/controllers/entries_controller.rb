@@ -20,12 +20,12 @@ class EntriesController < ApplicationController
   def create
     the_entry = Entry.new
     the_entry.bracket_id = params.fetch("query_bracket_id")
-    the_entry.status = params.fetch("query_status")
-    the_entry.title = params.fetch("query_title")
+    the_entry.status = "entered"
+    the_entry.title = params.fetch("query_entry_title")
 
     if the_entry.valid?
       the_entry.save
-      redirect_to("/entries", { :notice => "Entry created successfully." })
+      redirect_to("/brackets/#{the_entry.bracket.id}", { :notice => "Entry created successfully." })
     else
       redirect_to("/entries", { :notice => "Entry failed to create successfully." })
     end
@@ -35,13 +35,13 @@ class EntriesController < ApplicationController
     the_id = params.fetch("path_id")
     the_entry = Entry.where({ :id => the_id }).at(0)
 
-    the_entry.bracket_id = params.fetch("query_bracket_id")
-    the_entry.status = params.fetch("query_status")
-    the_entry.title = params.fetch("query_title")
+    the_entry.bracket_id = the_entry.bracket.id
+    the_entry.status = "entered"
+    the_entry.title = params.fetch("query_new_title")
 
     if the_entry.valid?
       the_entry.save
-      redirect_to("/entries/#{the_entry.id}", { :notice => "Entry updated successfully."} )
+      redirect_to("/brackets/#{the_entry.bracket.id}", { :notice => "Entry updated successfully."} )
     else
       redirect_to("/entries/#{the_entry.id}", { :alert => "Entry failed to update successfully." })
     end

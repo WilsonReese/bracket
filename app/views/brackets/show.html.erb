@@ -18,6 +18,36 @@
       </div>
     </div>
 
+    <h2> Current Entries </h2>
+    <table>
+      <% @the_bracket.entries.each do |an_entry|%>
+      <tr>
+        <td>
+          <form action="/modify_entry/<%= an_entry.id %>"  method="post">
+            <label for="entry_title_box" hidden></label>
+            <input id="entry_title_box" name="query_new_title" value="<%= an_entry.title %>">
+            <button>Update Entry</button>
+          </form>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+
+    <% if Entry.where({ :bracket_id => @the_bracket.id }).count < @the_bracket.number_of_entries %>
+      <form action="/insert_entry" method="post">
+        <table>
+          <label for="entry_title_box"></label>
+          <input type="text" id="entry_title_box" name="query_entry_title">
+          <label for="bracket_box" hidden></label>
+          <input type="text" name="query_bracket_id" value="<%= @the_bracket.id %>" hidden>
+          <button>Add Entry</button>
+      </form>
+    <% end %>
+
+    <% if Entry.where({ :bracket_id => @the_bracket.id }).count == @the_bracket.number_of_entries %>
+      BUTTON START BRACKET => Renders a new page => table version of bracket
+    <% end %>
+    
     <dl>
       <dt>
         Number of entries
@@ -25,6 +55,7 @@
       <dd>
         <%= @the_bracket.number_of_entries %>
       </dd>
+
 
       <dt>
         Manager

@@ -25,7 +25,7 @@ class BracketsController < ApplicationController
 
     if the_bracket.valid?
       the_bracket.save
-      redirect_to("/brackets", { :notice => "Bracket created successfully." })
+      redirect_to("/brackets/#{the_bracket.id}", { :notice => "Bracket created successfully." })
     else
       redirect_to("/brackets", { :notice => "Bracket failed to create successfully." })
     end
