@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all entries
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new entry
+    </h2>
+
+    <form action="/insert_entry" method="post">
+      <div>
+        <label for="bracket_id_box">
+          Bracket
+        </label>
+
+        <input type="text" id="bracket_id_box" name="query_bracket_id">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <button>
+        Create entry
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Bracket
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_entries.each do |an_entry| %>
+      <tr>
+        <td>
+          <%= an_entry.id %>
+        </td>
+
+        <td>
+          <%= an_entry.bracket_id %>
+        </td>
+
+        <td>
+          <%= an_entry.status %>
+        </td>
+
+        <td>
+          <%= an_entry.title %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_entry.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_entry.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/entries/<%= an_entry.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

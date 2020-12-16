@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all brackets
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new bracket
+    </h2>
+
+    <form action="/insert_bracket" method="post">
+      <div>
+        <label for="number_of_entries_box">
+          Number of entries
+        </label>
+
+        <input type="text" id="number_of_entries_box" name="query_number_of_entries">
+      </div>
+
+      <div>
+        <label for="manager_id_box">
+          Manager
+        </label>
+
+        <input type="text" id="manager_id_box" name="query_manager_id">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <button>
+        Create bracket
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Number of entries
+        </th>
+
+        <th>
+          Manager
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_brackets.each do |a_bracket| %>
+      <tr>
+        <td>
+          <%= a_bracket.id %>
+        </td>
+
+        <td>
+          <%= a_bracket.number_of_entries %>
+        </td>
+
+        <td>
+          <%= a_bracket.manager_id %>
+        </td>
+
+        <td>
+          <%= a_bracket.status %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_bracket.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_bracket.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/brackets/<%= a_bracket.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

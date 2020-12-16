@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Bracket #<%= @the_bracket.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/brackets">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_bracket/<%= @the_bracket.id %>">
+          Delete bracket
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Number of entries
+      </dt>
+      <dd>
+        <%= @the_bracket.number_of_entries %>
+      </dd>
+
+      <dt>
+        Manager
+      </dt>
+      <dd>
+        <%= @the_bracket.manager_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_bracket.status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bracket.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_bracket.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit bracket
+    </h2>
+
+    <form action="/modify_bracket/<%= @the_bracket.id %>"  method="post" >
+      <div>
+        <label for="number_of_entries_box">
+          Number of entries
+        </label>
+
+        <input type="text" id="number_of_entries_box" name="query_number_of_entries" value="<%= @the_bracket.number_of_entries %>">
+      </div>
+
+      <div>
+        <label for="manager_id_box">
+          Manager
+        </label>
+
+        <input type="text" id="manager_id_box" name="query_manager_id" value="<%= @the_bracket.manager_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_bracket.status %>">
+      </div>
+
+      <button>
+        Update bracket
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
